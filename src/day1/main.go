@@ -28,6 +28,11 @@ func getSumOfCalValues(input []byte) int {
 func replaceText(input []byte) []byte {
 	numbersText := []string{"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"}
 	inputString := string(input)
+
+	//if we just do a normal replace to swap text for the actual number, edge cases like "eightwo"
+	//will result in only one of the two digits getting converted. To prevent this we leave the first
+	//and last characters on either side of the replacements. So replacing eight in the above string
+	//will produce e8two
 	for i, v := range numbersText {
 		re := regexp.MustCompile(v)
 		s := fmt.Sprintf("%v%v%v", v[0:1], (i + 1), v[len(v)-1:])
