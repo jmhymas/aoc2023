@@ -8,7 +8,9 @@ import (
 	"strings"
 )
 
-func part1(games []string) {
+func part1(games []string) int {
+	fmt.Println("PART1")
+	fmt.Println("-------------------------------------")
 	color_totals := map[string]int{
 		"green": 13,
 		"blue":  14,
@@ -30,23 +32,25 @@ func part1(games []string) {
 				if err != nil {
 					panic(err)
 				}
-				fmt.Printf("Game: %d - %s : %d\n", game_number, cube_color, cube_count)
 				if cube_count > color_totals[cube_color] {
+					fmt.Printf("Game %d not possible with %s cube count of %d.\n", game_number+1, cube_color, cube_count)
 					game_possile = false
 					break RoundLoop
 				}
 			}
 		}
 		if game_possile == true {
+			fmt.Printf("Game %d possible.\n", game_number+1)
 			sum += game_number + 1
 		}
 	}
-
-	fmt.Println(sum)
+	fmt.Println("-------------------------------------")
+	return sum
 }
 
-func part2(games []string) {
-
+func part2(games []string) int {
+	fmt.Println("PART2")
+	fmt.Println("-------------------------------------")
 	power := 0
 
 	for game_number, game := range games {
@@ -76,19 +80,21 @@ func part2(games []string) {
 			}
 		}
 		product := 1
+
+		fmt.Printf("Game %d max values: (", game_number+1)
 		for color, number := range max_cube_numbers {
-			fmt.Printf("Game %d - %s : %d\n", game_number, color, number)
+			fmt.Printf("%s : %d, ", color, number)
 			product *= number
 		}
-
+		fmt.Printf(")\n")
 		power += product
 	}
-
-	fmt.Println(power)
+	fmt.Println("-------------------------------------")
+	return power
 }
 
 func main() {
-	file, err := os.Open("./input.txt")
+	file, err := os.Open("./input_example.txt")
 	if err != nil {
 		panic(err)
 	}
@@ -108,6 +114,9 @@ func main() {
 		panic(err)
 	}
 
-	//part1(games)
-	part2(games)
+	sum := part1(games)
+	power := part2(games)
+
+	fmt.Printf("The sum of the possible games in part 1 is %d\n", sum)
+	fmt.Printf("the power of all the required cube numbers in part 2 is %d\n", power)
 }
