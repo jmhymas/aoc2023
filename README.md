@@ -29,4 +29,4 @@ Replace day2 with the appropriate value. The .gitignore file has a line so the b
 
 ## Notes
 
-You'll probably see some repeated code in some of the solutions. I want to keep both part1 and part2 in one file for each day, and thanks to the way Advent of Code is structured, sometimes it's easier to just copy and modify the code from part1 to do part2. The main focus here is to have a little fun learning Go and solve the problems at hand, not to spend a bunch of time formatting/refactoring the code.
+You'll probably see some repeated code in some of the solutions. I want to keep both part1 and part2 in one file for each day, and thanks to the way Advent of Code is structured, sometimes it's easier to just copy and modify the code from part1 to do part2. The main focus here is to have a little fun learning Go and solve the problems at hand, not to spend a bunch of time formatting/refactoring the code.test
